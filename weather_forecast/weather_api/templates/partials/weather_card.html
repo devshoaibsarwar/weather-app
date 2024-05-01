@@ -1,0 +1,61 @@
+{% if weather_data %}
+    <div class="card">
+        {% if forecast_type == "3-hourly" %}
+            {% include "partials/paginator.html" %}
+        {% endif %}
+        <div class="card-body"> 
+            <h5 class="card-title">{{forecast_type|title}} Weather</h5>
+            <div class="row col-md-10 col-sm-12">
+                <div class="col-sm-5 forecast-image">
+                    {% if weather_data.weather %}
+                    <img src="https://openweathermap.org/img/wn/{{ weather_data.weather.icon }}@2x.png" />
+                    {% endif %}
+                </div>
+                <div class="col-sm-6">
+                    <h6>Temperature</h6>
+                    {% if weather_data.temprature %}
+                    <p id="temprature">{{ weather_data.temprature }}°C</p>
+                    {% endif %}
+                    <h6>Real Feel</h6>
+                    {% if weather_data.feels_like %}
+                    <p>{{ weather_data.feels_like }}°C</p>
+                    {% endif %}
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="card-text">Date: {{weather_data.forecast_date}}</p>
+                        <p class="card-text">Time: {{weather_data.forecast_time}}</p>
+                        {% if weather_data.weather %}
+                        <p class="card-text">Conditions: {{ weather_data.weather.description|title }}</p>
+                        {% endif %}
+                        {% if weather_data.wind_speed %}
+                        <p class="card-text">Wind: {{ weather_data.wind_speed }} km/h</p>
+                        {% endif %}
+                        {% if weather_data.wind_gust %}
+                        <p class="card-text">Wind Gusts: {{ weather_data.wind_gust }} km/h</p>
+                        {% endif %}
+                        {% if weather_data.dew_point %}
+                        <p class="card-text">Dew Point: {{ weather_data.dew_point }}°C </p>
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-6">
+                        {% if weather_data.pressure %}
+                        <p class="card-text">Pressure: {{ weather_data.pressure }} mb</p>
+                        {% endif %}
+                        {% if weather_data.clouds %}
+                        <p class="card-text">Clouds: {{ weather_data.clouds }}%</p>
+                        {% endif %}
+                        {% if weather_data.humidity %}
+                        <p class="card-text">Humidity: {{ weather_data.humidity }}%</p>
+                        {% endif %}
+                        {% if weather_data.visibility %}
+                        <p class="card-text">Visibility: {{ weather_data.visibility }} km</p>
+                        {% endif %}
+                    </div>
+                </div>
+        </div>
+    </div>
+{% else %}
+    <div>No data available</div>
+{% endif %}

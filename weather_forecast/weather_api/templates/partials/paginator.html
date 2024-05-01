@@ -1,0 +1,12 @@
+<div id="pagination-block" data-total-cards="{{ total_cards }}" data-current-card="{{ card_number }}" class="d-flex justify-content-between mt-2 ml-2 mr-2">
+    <button id="card-back-btn" class="pagination-buttons" onClick="handlePagination('back', '{{ weather_data.lat|floatformat:"4" }}-{{ weather_data.lon|floatformat:"4" }}-{{ weather_data.forecast_type }}')" {% if card_number == 0 %} disabled {% endif %}>
+        <span class="material-icons">
+            navigate_before
+        </span>
+    </button>
+    <button id="card-next-btn" class="pagination-buttons" onClick="handlePagination('next', '{{ weather_data.lat|floatformat:"4" }}-{{ weather_data.lon|floatformat:"4" }}-{{ weather_data.forecast_type }}')" {% if card_number >= total_cards %} disabled {% endif %}>
+        <span class="material-icons">
+            navigate_next
+        </span>
+    </button>
+</div>

@@ -1,0 +1,88 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #dee2e64f;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-subtitle {
+    font-size: 1.1rem;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+.card-body h6 {
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 0.6rem;
+}
+
+.pagination-buttons {
+    outline: none;
+    padding-top: 7px;
+    border: none;
+    border-radius: 25%;
+    width: 40px;
+    aspect-ratio: 1;
+}
+
+.pagination-buttons:hover {
+    background-color: #d1b8b8c5;
+}
+
+.forecast-image {
+    height: 100px;
+}
+
+.pagination {
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.row {
+    flex-wrap: nowrap !important;
+}
+
+.page-link {
+    color: #383a3d;
+    cursor: pointer;
+    border-radius: 5px !important;
+}
+
+.page-link.active {
+    background: #a2aeb9;
+    color: white;
+}
+
+.global-error-message {
+    width: 80%;
+    margin: 10px auto;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 992px) {
+    .weather-card {
+        margin-top: 20px;
+        border-left: 0 !important;
+    }
+}

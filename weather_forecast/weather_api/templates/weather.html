@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Weather App {% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block content %}
+<div id="weather-container">
+    <div id="globalErrors" class="global-error-message alert alert-danger d-none" role="alert"></div>
+    <div class="d-flex flex-wrap mt-4 justify-content-center">
+        {% include "partials/weather_form.html" %}
+
+        <div id="weatherData" class="weather-card d-flex flex-column justify-content-center border-left col-lg-6">
+            {% include "partials/weather_card.html" %}
+        </div>
+    </div>
+    <!-- Weather Data Request -->
+    <div id="weather-data-block" class="mt-5 d-none">
+        <h3 class="text-center">Recent Requests</h3>
+        <div id="weather-table"></div>
+        <div id="table-pagination-block"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const INDEX_DB_NAME = '{{db_name}}';
+        const CACHE_EXPIRATION_TIME = '{{cache_time}}';
+        let csrfToken = '{{ csrf_token }}';
+        let submitURL = '{{ request.path }}';
+        let weatherData = {{weather_data|safe}};
+
+        document.addEventListener('DOMContentLoaded', function() {
+            preloadRecentRequest()
+        });
+    </script>
+    <script src="{% static 'js/utils.js' %}"></script>
+    <script src="{% static 'js/indexdb_client.js' %}"></script>
+    <script src="{% static 'js/controllers.js' %}"></script>
+{% endblock %}

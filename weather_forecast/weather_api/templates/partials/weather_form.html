@@ -1,0 +1,13 @@
+<form id="weather-form" class="col-lg-6">
+    {% csrf_token %}
+    {% with field=form.latitude %}
+      {% include "partials/input_field.html" %}
+    {% endwith %}
+    {% with field=form.longitude %}
+      {% include "partials/input_field.html" %}
+    {% endwith %}
+    {% with field=form.forecast_type %}
+      {% include "partials/input_field.html" %}
+    {% endwith %}
+    <button type="button" class="btn btn-secondary btn-block" onclick="submitWeatherForm()">Submit</button>
+</form>
