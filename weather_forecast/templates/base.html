@@ -9,7 +9,9 @@
     <title>{% block title %}{% endblock %}</title>
     
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block"
+      rel="preload" as="style">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block"
       rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link
