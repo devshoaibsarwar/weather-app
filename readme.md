@@ -26,6 +26,11 @@ pip install -r requirements.txt
 
 ## Running the Server:
 
+Before running server, execute the following command to collect the static files in the project:
+```
+python manage.py collectstatic
+```
+
 To run the server, execute the following command:
 ```
 python manage.py runserver
