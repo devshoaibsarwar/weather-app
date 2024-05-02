@@ -1,6 +1,7 @@
 import json
 import requests
 from django.conf import settings
+from django.utils.http import urlencode
 from requests.exceptions import RequestException 
 
 class OpenWeatherClient:
@@ -8,14 +9,24 @@ class OpenWeatherClient:
         self.base_url = settings.OPENWEATHER_BASE_URL
         self.api_key = settings.OPENWEATHER_API_KEY
 
-    def get_current_weather(self, data={}):
+    def get_current_weather(self, data=None):
+        if data is None:
+            data = {}
         return self._request('GET', 'weather', data)
-        
-    def get_weather_forecast(self, data={}):
+
+    def get_weather_forecast(self, data=None):
+        if data is None:
+            data = {}
         return self._request('GET', 'forecast', data)
 
     def _request(self, method, path, data=None):
-        url = f"{self.base_url}/{path}?lat={data.get('latitude','')}&lon={data.get('longitude','')}&units=metric&appid={self.api_key}"
+        params = urlencode({
+            'lat': data.get('latitude', ''),
+            'lon': data.get('longitude', ''),
+            'units': 'metric',
+            'appid': self.api_key
+        })
+        url = f"{self.base_url}/{path}?{params}"
         try:
             response = requests.request(method, url)
             response.raise_for_status()

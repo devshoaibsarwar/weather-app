@@ -28,7 +28,7 @@ if env is None:
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env(
+SECRET_KEY = env.get_value(
     "SECRET_KEY",
     default="django-insecure-key",
 )
@@ -139,7 +139,7 @@ INDEXDB_NAME = env.get_value('INDEXDB_NAME', default='WeatherDB')
 
 # OpenWeatherAPI settings
 OPENWEATHER_BASE_URL = env.get_value('OPENWEATHER_BASE_URL', default='https://api.openweathermap.org/data/2.5')
-OPENWEATHER_API_KEY = env.get_value('OPENWEATHER_BASE_URL', default='6f52271cca483690141d24c3554b2710')
+OPENWEATHER_API_KEY = env.get_value('OPENWEATHER_API_KEY', default='6f52271cca483690141d24c3554b2710')
 
 # Django REST Framework
 REST_FRAMEWORK = {

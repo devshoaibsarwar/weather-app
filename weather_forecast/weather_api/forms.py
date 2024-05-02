@@ -1,12 +1,14 @@
 from django import forms
-
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class WeatherForm(forms.Form):
     latitude = forms.DecimalField(
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Latitude'})
+        validators=[MinValueValidator(-90), MaxValueValidator(90)],
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Latitude'})
     )
     longitude = forms.DecimalField(
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Longitude'})
+        validators=[MinValueValidator(-180), MaxValueValidator(180)],
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Longitude'})
     )
     forecast_type = forms.ChoiceField(
         choices=[
